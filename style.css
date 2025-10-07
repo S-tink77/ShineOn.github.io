@@ -48,3 +48,15 @@ form input, form textarea, form button {
   width: 100%;
   max-width: 300px;
 }
+a:link{
+  color:yellow
+}
+a:hover{
+  color:#ffeb3b
+}
+a:visited{
+  color:#8d8324
+}
+a:active{
+  color:#ffeb3b
+}
