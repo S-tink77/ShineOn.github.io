@@ -1,10 +1,12 @@
 body {
-  font-family: Arial, sans-serif;
+ 
   margin: 0;
   padding: 0;
-  background: #f8f8f8;
+  background-image:  url('images/sparklebg2.png');
+  background-repeat: no-repeat;
+  background-size:contain;
 }
-nav ul {
+/* nav ul {
   background: #007bff;
   color: #fff;
   list-style: none;
@@ -25,21 +27,21 @@ nav ul li a {
 }
 nav ul li a:hover {
   color: #ffeb3b;
-}
+} */
 main {
   padding: 20px;
   max-width: 900px;
   margin: 0 auto;
-  background: #fff;
-  box-shadow: 0 0 10px #ccc;
+  font-family: 'Sunshine', Arial, sans-serif;
+  /* box-shadow: 0 0 10px #ccc; */
   min-height: 400px;
 }
-footer {
-  background: #007bff;
+footer { 
+   background-image:  url('images/');
   color: #fff;
   text-align: center;
   padding: 10px 0;
-  margin-top: 30px;
+  margin-top: 30px; 
 }
 form input, form textarea, form button {
   display: block;
@@ -59,4 +61,38 @@ a:visited{
 }
 a:active{
   color:#ffeb3b
+}
+    #bg-image {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%) scale(1);
+      transform-origin: bottom center;
+      z-index: -1;
+      transition: transform 0.2s;
+      will-change: transform;
+      
+    }
+    
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 50px;
+      background: rgba(255,255,255,0.85);
+      max-width: 700px;
+      margin: 80px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+@font-face {
+  font-family: 'Sunshine';
+  src: url('fonts/Sunshine.ttf') format('truetype');
+}
+body {
+  font-family: 'Sunshine', Arial, sans-serif;
+}
+html, body {
+  max-height: 5000px;
+  
 }

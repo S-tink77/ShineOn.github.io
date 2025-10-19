@@ -6,36 +6,175 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav>
+   <title>Pancake Menu</title>
+ <style>
+    /* Hamburger button styles */
+    .hamburger {
+      cursor: pointer;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: none;
+      border: none;
+      position: relative;
+      z-index: 1001;
+    }
+    .hamburger .bar {
+      width: 300px;
+      height: 40px;
+      background-color: #fff8dc; /* Light yellow bars */
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.4s;
+    }
+    /* Hidden menu styles */
+    .popup-menu {
+      display: none;
+      position: absolute;
+      top: 50px; /* Drop below the button */
+      left: 0;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 10px 0;
+      min-width: 180px;
+      z-index: 1000;
+    }
+    .popup-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: block;
+    }
+    .popup-menu li {
+      padding: 10px 20px;
+      border-bottom: 1px solid #eee;
+      display: block;
+    }
+    .popup-menu li:last-child {
+      border-bottom: none;
+    }
+    .popup-menu li a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+    }
+    /* Show menu when active */
+    .popup-menu.active {
+      display: block;
+    }
+  </style>
+<!-- Hamburger Button -->
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </button>
+
+  <!-- Popup Menu (Hidden by default) -->
+  <nav class="popup-menu" id="popupMenu">
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
-      <li><a href="programs.html">Programs</a></li>
-      <li><a href="get-involved.html">Get Involved</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="news.html">News & Updates</a></li>
       <li><a href="donate.html">Donate</a></li>
-      <li><a href="resources.html">Resources</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li><a href="legal.html">Legal/Privacy</a></li>
+      <li><a href="events.html">Events</a></li>
     </ul>
   </nav>
-  <main>
+
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const popupMenu = document.getElementById('popupMenu');
+
+    // Position the popup menu below the hamburger button
+    hamburgerBtn.addEventListener('click', () => {
+      // Get the button's position
+      const rect = hamburgerBtn.getBoundingClientRect();
+      popupMenu.style.left = rect.left + "px";
+      popupMenu.style.top = rect.bottom + "px";
+      popupMenu.classList.toggle('active');
+    });
+
+    // Optional: Hide menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!hamburgerBtn.contains(event.target) && !popupMenu.contains(event.target)) {
+        popupMenu.classList.remove('active');
+      }
+    });
+  </script>
+
+
+   <title>Shrinking Bottom Background Image</title>
+  <style>
+    body {
+      min-height: 200vh; /* To allow scrolling */
+      margin: 0;
+    }
+    /* Wrapper for the background image */
+    #bg-image {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%) scale(1);
+      transform-origin: bottom center;
+      z-index: -1;
+      transition: transform 0.2s;
+      will-change: transform;
+      /* Optional: smooth out scaling */
+    }
+    /* Make sure content goes above the image */
+    .content {
+      position: relative;
+      z-index: 1;
+      /* padding: 50px; */
+      background: rgba(255,255,255,0.85);
+      max-width: 700px;
+      /* margin: 80px auto; */
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+  </style>
+
+
+  <div id="bg-image">
+    <img src="images/sunbg2.webp" alt="Background" id="shrinkImg" style="width:2100px;max-width:1700vw;">
+  </div>
+  <script>
+    const bg = document.getElementById('bg-image');
+    window.addEventListener('scroll', function() {
+      const scrollY = window.scrollY || window.pageYOffset;
+      // maxShrink: how much the image should shrink (e.g. 0.4 means 40% size at max scroll)
+      const maxShrink = 0.35;
+      // shrink until 500px scroll, then stop shrinking
+      const maxScroll = 600;
+      let scale = 1 - (Math.min(scrollY, maxScroll) / maxScroll) * (1 - maxShrink);
+      bg.style.transform = `translateX(-50%) scale(${scale})`;
+    });
+
+
+    window.addEventListener('scroll', function() {
+  const maxScroll = -100; // pixels from top
+  if(window.scrollY > maxScroll) {
+    window.scrollTo(0, maxScroll);
+  }
+});
+  </script>
+  
+
+  <main style="font-family: 'Sunshine';">
     <h1>The Tim Guinan Memorial Fund</h1>
     <p>Our Goal is to raise funds for Veterans, First Responders, College Students, and Boy Scouts</p>
-    <!-- Example image -->
-    <!-- <img src="images/hero.jpg" alt="Organization Hero"> -->
-    <section>
-      <h2>Featured Initiatives</h2>
-      <ul>
-        <li>____ [Initiative 1] ____</li>
-        <li>____ [Initiative 2] ____</li>
-      </ul>
-    </section>
+
   </main>
   <footer>
     <p><a href = "mailto:shineontim@gmail.com">Contact us</a> </p>
     <p><a href = "https://www.facebook.com/shine.on.207666" >Follow us on Facebook</a></p>
   </footer>
+  
 </body>
+
+    <!-- Example image -->
+    <!-- <img src="images/org.jpg" alt="Organization"> -->
 </html>
