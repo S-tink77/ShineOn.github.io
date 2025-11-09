@@ -78,7 +78,7 @@
   <nav class="popup-menu" id="popupMenu">
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
+     
       <li><a href="donate.html">Donate</a></li>
       <li><a href="events.html">Events</a></li>
     </ul>
@@ -136,7 +136,29 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     }
   </style>
+ <div id="bg-image">
+    <img src="sunbg2.webp" alt="Background" id="shrinkImg" style="width:2100px;max-width:1700vw;">
+  </div>
+  <script>
+    const bg = document.getElementById('bg-image');
+    window.addEventListener('scroll', function() {
+      const scrollY = window.scrollY || window.pageYOffset;
+      // maxShrink: how much the image should shrink (e.g. 0.4 means 40% size at max scroll)
+      const maxShrink = 0.35;
+      // shrink until 500px scroll, then stop shrinking
+      const maxScroll = 600;
+      let scale = 1 - (Math.min(scrollY, maxScroll) / maxScroll) * (1 - maxShrink);
+      bg.style.transform = `translateX(-50%) scale(${scale})`;
+    });
 
+
+    window.addEventListener('scroll', function() {
+  const maxScroll = -100; // pixels from top
+  if(window.scrollY > maxScroll) {
+    window.scrollTo(0, maxScroll);
+  }
+});
+  </script>
   <main>
     <h1>Events</h1>
     <h2>Upcoming Events</h2>
